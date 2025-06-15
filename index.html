@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Father's Day</title>
+    </head>
+    <body id="body">
+        <h1 id="prompt">What's your first name?</h1>
+        <input id="nameInput" autocomplete="off" autocorrect="off">
+        <h1 class="sub-prompt" id="prompt1">P</h1>
+        <h1 class="sub-prompt" id="prompt2">A</h1>
+        <h1 class="sub-prompt" id="prompt3">P</h1>
+        <h1 class="sub-prompt" id="prompt4">A</h1>
+        <img id="image" src="image.png">
+        <div>
+        </div>
+    </body>
+    <style>
+        body {
+            background-color: lightgoldenrodyellow;
+            transition: background-color 1s;
+            background-repeat: no-repeat;
+            max-height: 4vh;
+            background-size: cover;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: 200;
+            justify-items: center;
+            cursor: default;
+        }
+        #prompt {
+            margin-top: 30vh;
+            font-size: 4vh;
+            transition: opacity 1s;
+        }
+        .sub-prompt {
+            margin-top: 30vh;
+            display: none;
+            opacity: 0;
+            font-size: 6vh;
+            transition: opacity 1s;
+        }
+        #nameInput {
+            background-color: transparent;
+            border: 1px black double;
+            font-size: 3vh;
+            transition: opacity 1s;
+            cursor: default;
+        }
+        #image {
+            display: none;
+            transform: rotateZ(5deg);
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+    <script>
+        sWid = screen.width;
+        console.log("sWid > 768",(sWid>768))
+        nameInput = "";
+        words1 = ["cool", "great", "nice", "good"];
+
+        function toTitleCase(str) {
+            return str.split(" ").map(
+                word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(" ");
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+            input = toTitleCase(document.getElementById("nameInput").value);
+            (document.getElementById("nameInput")).blur()
+            if (input !== ""){
+                word1 = words1[(Math.round(Math.random()*3))]
+                document.getElementById("prompt").style.opacity = 0;
+                document.getElementById("nameInput").style.opacity = 0;
+                setTimeout(function(){
+                    document.getElementById("nameInput").style.display = "none";
+                    document.getElementById("prompt").innerText = input + ", " + word1 + " name!";
+                    document.getElementById("prompt").style.opacity = 1;
+                    setTimeout(function(){
+                        document.getElementById("prompt").style.opacity = 0;
+                        setTimeout(function(){
+                            document.getElementById("prompt").innerText = "But, it's nicer to call you...";
+                            document.getElementById("prompt").style.opacity = 1;
+                            setTimeout(function(){
+                                document.getElementById("prompt").style.opacity = 0;
+                                setTimeout(function(){
+                                    document.getElementById("prompt").style.display = "none";
+                                    document.getElementById("prompt1").style.display = "inline-block";
+                                    document.getElementById("prompt2").style.display = "inline-block";
+                                    document.getElementById("prompt3").style.display = "inline-block";
+                                    document.getElementById("prompt4").style.display = "inline-block";
+                                    setTimeout(function(){
+                                    document.getElementById("prompt1").style.opacity = 1;
+                                    },10)
+                                    setTimeout(function(){
+                                        document.getElementById("prompt2").style.opacity = 1;
+                                    },1010);
+                                    setTimeout(function(){
+                                        document.getElementById("prompt3").style.opacity = 1;
+                                    },2010);
+                                    setTimeout(function(){
+                                        document.getElementById("prompt4").style.opacity = 1;
+                                    },3010);
+                                    setTimeout(function(){
+                                        document.getElementById("prompt1").style.opacity = 0;
+                                        document.getElementById("body").style.backgroundColor = "white";
+                                        setTimeout(function(){
+                                            document.getElementById("prompt2").style.opacity = 0;
+                                        },100);
+                                        setTimeout(function(){
+                                            document.getElementById("prompt3").style.opacity = 0;
+                                        },200);
+                                        setTimeout(function(){
+                                            document.getElementById("prompt4").style.opacity = 0;
+                                        },300);
+                                        setTimeout(function(){
+                                            document.getElementById("prompt1").style.display = "none";
+                                            document.getElementById("prompt2").style.display = "none";
+                                            document.getElementById("prompt3").style.display = "none";
+                                            document.getElementById("prompt4").style.display = "none";
+                                            document.getElementById("image").style.display = "block";
+                                            document.getElementById("prompt").style.display = "block";
+                                            document.getElementById("prompt").innerHTML = "Happy Fathers' Day! &#128140;&#129730;";
+                                            document.getElementById("prompt").style.marginTop = "16vh";
+                                            document.getElementById("body").style.backgroundColor = "#f39999";
+                                            if(sWid > 768){
+                                                document.getElementById("image").style.width = "32vw";
+                                            } else if(sWid < 768) {
+                                                document.getElementById("image").style.width = "60vw";
+                                            }
+                                            setTimeout(function(){
+                                                document.getElementById("prompt").style.opacity = 1;
+                                                document.getElementById("image").style.opacity = 1;
+                                            },100)
+                                        },1500);
+                                    },5000);
+                                },1000);
+                            },1500);
+                        },1500);
+                    },1500);
+                },1500);
+            }
+            }
+        });
+
+    </script>
+</html>
